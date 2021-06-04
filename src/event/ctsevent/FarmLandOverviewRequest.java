@@ -18,11 +18,11 @@ public class FarmLandOverviewRequest extends CTSEvent implements Serializable {
 		this.coordinateY = coordinateY;
 	}
 
-	protected int getCoordinateX() {
+	public int getCoordinateX() {
 		return coordinateX;
 	}
 
-	protected int getCoordinateY() {
+	public int getCoordinateY() {
 		return coordinateY;
 	}
 
