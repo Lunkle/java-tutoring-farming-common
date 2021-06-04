@@ -10,11 +10,11 @@ public class LoginRequest extends CTSEvent {
 		this.password = password;
 	}
 
-	protected String getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
-	protected String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
