@@ -2,7 +2,9 @@ package farm.plant;
 
 public enum PlantType {
 
-	FLOWERING,
+	FRUIT_BEARING,
+
+	GRAIN_BEARING,
 
 	MOSS,
 

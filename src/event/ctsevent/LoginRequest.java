@@ -2,6 +2,10 @@ package event.ctsevent;
 
 public class LoginRequest extends CTSEvent {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3999610036935309983L;
 	private String username;
 	private String password;
 
