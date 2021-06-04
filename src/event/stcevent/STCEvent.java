@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import event.FarmingEvent;
 
+/**
+ * A server to client event.
+ * 
+ * @author Jay
+ *
+ */
 public abstract class STCEvent extends FarmingEvent implements Serializable {
 
 	/**
