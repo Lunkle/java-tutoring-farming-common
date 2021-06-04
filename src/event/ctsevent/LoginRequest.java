@@ -1,15 +1,18 @@
 package event.ctsevent;
 
-public class LoginRequest extends CTSEvent {
+import java.io.Serializable;
+
+public class LoginRequest extends CTSEvent implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3999610036935309983L;
+	private static final long serialVersionUID = 6397067689747766977L;
 	private String username;
 	private String password;
 
-	public LoginRequest(String username, String password) {
+	public LoginRequest(long id, String username, String password) {
+		super(id);
 		this.username = username;
 		this.password = password;
 	}

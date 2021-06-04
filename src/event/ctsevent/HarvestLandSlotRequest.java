@@ -1,14 +1,17 @@
 package event.ctsevent;
 
-public class HarvestLandSlotRequest extends CTSEvent {
+import java.io.Serializable;
+
+public class HarvestLandSlotRequest extends CTSEvent implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -884813565888890245L;
+	private static final long serialVersionUID = 2827404747457674501L;
 	private int index;
 
-	public HarvestLandSlotRequest(int index) {
+	public HarvestLandSlotRequest(long id, int index) {
+		super(id);
 		this.index = index;
 	}
 
