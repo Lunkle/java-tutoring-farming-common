@@ -4,7 +4,7 @@ public class FarmOverviewRequest extends CTSEvent {
 
 	@Override
 	public String getDescription() {
-		return "Farm overview request";
+		return "Fetching farm overview";
 	}
 
 }
