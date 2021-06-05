@@ -6,14 +6,12 @@ import event.stcevent.STCEvent;
 
 public class FarmLandOverviewResponse extends STCEvent implements Serializable {
 
-	private static final long serialVersionUID = -9180974157532158963L;
+	private static final long serialVersionUID = -4770847606385112672L;
 	private String[][] terrainType;
 	private boolean[][] hasPlant;
-	private long respondingTo;
 
 	public FarmLandOverviewResponse(long respondingTo, long id, String[][] terrainType, boolean[][] hasPlant) {
-		super(id);
-		this.respondingTo = respondingTo;
+		super(id, respondingTo);
 		this.terrainType = terrainType;
 		this.hasPlant = hasPlant;
 	}
@@ -24,10 +22,6 @@ public class FarmLandOverviewResponse extends STCEvent implements Serializable {
 
 	public boolean[][] getHasPlant() {
 		return hasPlant;
-	}
-
-	public long getRespondingTo() {
-		return respondingTo;
 	}
 
 	@Override

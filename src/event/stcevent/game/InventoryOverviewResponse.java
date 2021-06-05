@@ -6,20 +6,14 @@ import event.stcevent.STCEvent;
 
 public class InventoryOverviewResponse extends STCEvent implements Serializable {
 
-	private static final long serialVersionUID = -5686526908456880540L;
-	private long respondingTo;
+	private static final long serialVersionUID = 3034395966129180076L;
 	private String[] items;
 	private int[] amounts;
 
 	public InventoryOverviewResponse(long respondingTo, long id, String[] items, int[] amount) {
-		super(id);
-		this.respondingTo = respondingTo;
+		super(id, respondingTo);
 		this.items = items;
 		this.amounts = amount;
-	}
-
-	public long getRespondingTo() {
-		return respondingTo;
 	}
 
 	public String[] getItems() {

@@ -6,17 +6,10 @@ import event.stcevent.STCEvent;
 
 public class LoginFail extends STCEvent implements Serializable {
 
-	private static final long serialVersionUID = -4222325293475789579L;
-
-	private long respondingTo;
+	private static final long serialVersionUID = -3454063514728355991L;
 
 	public LoginFail(long id, long respondingTo) {
-		super(id);
-		this.respondingTo = respondingTo;
-	}
-
-	public long getRespondingTo() {
-		return respondingTo;
+		super(id, respondingTo);
 	}
 
 	@Override
