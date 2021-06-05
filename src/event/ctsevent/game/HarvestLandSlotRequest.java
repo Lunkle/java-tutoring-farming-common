@@ -6,23 +6,39 @@ import event.ctsevent.CTSEvent;
 
 public class HarvestLandSlotRequest extends CTSEvent implements Serializable {
 
-	private static final long serialVersionUID = -4732150038573153244L;
+	private static final long serialVersionUID = 6492706204872672579L;
 	private int farmLandX;
 	private int farmLandY;
-	private int x;
-	private int y;
+	private int row;
+	private int col;
 
-	public HarvestLandSlotRequest(long id, int farmLandX, int farmLandY, int x, int y) {
+	public HarvestLandSlotRequest(long id, int farmLandX, int farmLandY, int row, int col) {
 		super(id);
 		this.farmLandX = farmLandX;
 		this.farmLandY = farmLandY;
-		this.x = x;
-		this.y = y;
+		this.row = row;
+		this.col = col;
+	}
+
+	public int getFarmLandX() {
+		return farmLandX;
+	}
+
+	public int getFarmLandY() {
+		return farmLandY;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getCol() {
+		return col;
 	}
 
 	@Override
 	public String getDescription() {
-		return "Harvesting land slot plant (" + x + ", " + y + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
+		return "Harvesting land slot plant (" + row + ", " + col + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
 	}
 
 }
