@@ -10,7 +10,7 @@ public class LandSlotPlantOverviewResponse extends STCEvent implements Serializa
 	private String plantType;
 	private int approximateTimeUntilHarvestable;
 
-	public LandSlotPlantOverviewResponse(long respondingTo, long id, String plantType, int approximateTimeUntilHarvestable) {
+	public LandSlotPlantOverviewResponse(long id, long respondingTo, String plantType, int approximateTimeUntilHarvestable) {
 		super(id, respondingTo);
 		this.plantType = plantType;
 		this.approximateTimeUntilHarvestable = approximateTimeUntilHarvestable;
