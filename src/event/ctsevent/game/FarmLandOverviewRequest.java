@@ -1,6 +1,8 @@
-package event.ctsevent;
+package event.ctsevent.game;
 
 import java.io.Serializable;
+
+import event.ctsevent.CTSEvent;
 
 public class FarmLandOverviewRequest extends CTSEvent implements Serializable {
 
