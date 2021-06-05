@@ -4,20 +4,20 @@ import event.ctsevent.CTSEvent;
 
 public class SowSeedRequest extends CTSEvent {
 
-	private static final long serialVersionUID = -5841568669622746294L;
+	private static final long serialVersionUID = 4526352448249553065L;
 	private int farmLandX;
 	private int farmLandY;
 	private int row;
 	private int col;
-	private String plantName;
+	private String seedName;
 
-	public SowSeedRequest(long id, int farmLandX, int farmLandY, int row, int col, String plantName) {
+	public SowSeedRequest(long id, int farmLandX, int farmLandY, int row, int col, String seedName) {
 		super(id);
 		this.farmLandX = farmLandX;
 		this.farmLandY = farmLandY;
 		this.row = row;
 		this.col = col;
-		this.plantName = plantName;
+		this.seedName = seedName;
 	}
 
 	public int getFarmLandX() {
@@ -36,13 +36,13 @@ public class SowSeedRequest extends CTSEvent {
 		return col;
 	}
 
-	public String getPlantName() {
-		return plantName;
+	public String getSeedName() {
+		return seedName;
 	}
 
 	@Override
 	public String getDescription() {
-		return "Sowing " + plantName + " seed at (row: " + row + ", col: " + col + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
+		return "Sowing " + seedName + " seed at (row: " + row + ", col: " + col + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
 	}
 
 }
