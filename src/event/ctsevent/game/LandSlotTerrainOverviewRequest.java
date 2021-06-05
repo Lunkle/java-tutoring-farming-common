@@ -6,18 +6,18 @@ import event.ctsevent.CTSEvent;
 
 public class LandSlotTerrainOverviewRequest extends CTSEvent implements Serializable {
 
-	private static final long serialVersionUID = 1679840402323365016L;
+	private static final long serialVersionUID = 6061905788405085233L;
 	private int farmLandX;
 	private int farmLandY;
-	private int x;
-	private int y;
+	private int row;
+	private int col;
 
-	public LandSlotTerrainOverviewRequest(long id, int farmLandX, int farmLandY, int x, int y) {
+	public LandSlotTerrainOverviewRequest(long id, int farmLandX, int farmLandY, int row, int col) {
 		super(id);
 		this.farmLandX = farmLandX;
 		this.farmLandY = farmLandY;
-		this.x = x;
-		this.y = y;
+		this.row = row;
+		this.col = col;
 	}
 
 	public int getFarmLandX() {
@@ -28,17 +28,17 @@ public class LandSlotTerrainOverviewRequest extends CTSEvent implements Serializ
 		return farmLandY;
 	}
 
-	public int getX() {
-		return x;
+	public int getRow() {
+		return row;
 	}
 
-	public int getY() {
-		return y;
+	public int getCol() {
+		return col;
 	}
 
 	@Override
 	public String getDescription() {
-		return "Fetching land slot terrain overview (" + x + ", " + y + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
+		return "Fetching land slot terrain overview (row: " + row + ", col: " + col + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
 	}
 
 }
