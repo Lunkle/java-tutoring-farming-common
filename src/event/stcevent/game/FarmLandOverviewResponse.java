@@ -26,7 +26,7 @@ public class FarmLandOverviewResponse extends STCEvent implements Serializable {
 
 	@Override
 	public String getDescription() {
-		String string = "==FarmLand==\n";
+		String string = "\n==FarmLand==\n";
 		for (int row = 0; row < 4; row++) {
 			for (int col = 0; col < 4; col++) {
 				string += '[';
