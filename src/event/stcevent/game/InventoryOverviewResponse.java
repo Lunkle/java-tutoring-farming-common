@@ -26,9 +26,9 @@ public class InventoryOverviewResponse extends STCEvent implements Serializable 
 
 	@Override
 	public String getDescription() {
-		String string = "=Inventory==\n";
+		String string = "\n=Inventory==\n";
 		for (int i = 0; i < items.length; i++) {
-			string += items[i] + ' ' + amounts[i];
+			string += items[i] + ' ' + amounts[i] + '\n';
 		}
 		string += "============";
 		return string;
