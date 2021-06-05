@@ -4,11 +4,7 @@ import java.io.Serializable;
 
 public class FarmLandOverviewRequest extends CTSEvent implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5736056546837007817L;
-
+	private static final long serialVersionUID = 1679840402323365016L;
 	private int x;
 	private int y;
 

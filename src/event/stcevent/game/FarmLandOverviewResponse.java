@@ -1,36 +1,38 @@
 package event.stcevent.game;
 
+import java.io.Serializable;
+
 import event.stcevent.STCEvent;
 
-public class FarmLandOverviewResponse extends STCEvent {
+public class FarmLandOverviewResponse extends STCEvent implements Serializable {
 
-	private static final long serialVersionUID = 4876235866866219112L;
-
-	public static void main(String[] args) {
-		boolean[][] hasPlant = new boolean[][] { { true, true, true, true }, { false, true, true, true }, { false, false, true, true }, { true, false, true, true } };
-		System.out.println(new FarmLandOverviewResponse(1, null, hasPlant).getDescription());
-	}
-
+	private static final long serialVersionUID = -9180974157532158963L;
 	private String[][] terrainType;
 	private boolean[][] hasPlant;
+	private long respondingTo;
 
-	public FarmLandOverviewResponse(long id, String[][] terrainType, boolean[][] hasPlant) {
+	public FarmLandOverviewResponse(long respondingTo, long id, String[][] terrainType, boolean[][] hasPlant) {
 		super(id);
+		this.respondingTo = respondingTo;
 		this.terrainType = terrainType;
 		this.hasPlant = hasPlant;
 	}
 
-	protected String[][] getTerrainType() {
+	public String[][] getTerrainType() {
 		return terrainType;
 	}
 
-	protected boolean[][] getHasPlant() {
+	public boolean[][] getHasPlant() {
 		return hasPlant;
+	}
+
+	public long getRespondingTo() {
+		return respondingTo;
 	}
 
 	@Override
 	public String getDescription() {
-		String string = "============\n";
+		String string = "==FarmLand==\n";
 		for (int row = 0; row < 4; row++) {
 			for (int col = 0; col < 4; col++) {
 				string += '[';
