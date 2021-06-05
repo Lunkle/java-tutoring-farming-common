@@ -36,7 +36,7 @@ public class LandSlotTerrainOverviewRequest extends CTSEvent implements Serializ
 
 	@Override
 	public String getDescription() {
-		return "Fetching land slot overview (" + x + ", " + y + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
+		return "Fetching land slot terrain overview (" + x + ", " + y + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
 	}
 
 }

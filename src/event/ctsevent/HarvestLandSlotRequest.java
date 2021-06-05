@@ -4,28 +4,23 @@ import java.io.Serializable;
 
 public class HarvestLandSlotRequest extends CTSEvent implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2827404747457674501L;
-	private int index;
+	private static final long serialVersionUID = -4732150038573153244L;
+	private int farmLandX;
+	private int farmLandY;
+	private int x;
+	private int y;
 
-	public HarvestLandSlotRequest(long id, int index) {
+	public HarvestLandSlotRequest(long id, int farmLandX, int farmLandY, int x, int y) {
 		super(id);
-		this.index = index;
-	}
-
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
+		this.farmLandX = farmLandX;
+		this.farmLandY = farmLandY;
+		this.x = x;
+		this.y = y;
 	}
 
 	@Override
 	public String getDescription() {
-		return "Harvesting land slot " + index;
+		return "Harvesting land slot plant (" + x + ", " + y + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
 	}
 
 }
