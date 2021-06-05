@@ -1,6 +1,8 @@
-package event.ctsevent;
+package event.ctsevent.session;
 
 import java.io.Serializable;
+
+import event.ctsevent.CTSEvent;
 
 public class LoginRequest extends CTSEvent implements Serializable {
 
