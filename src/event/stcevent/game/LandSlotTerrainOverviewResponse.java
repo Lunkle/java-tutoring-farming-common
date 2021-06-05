@@ -50,7 +50,7 @@ public class LandSlotTerrainOverviewResponse extends STCEvent implements Seriali
 				+ "\nInfestation Level: " + infestationLevel
 				+ "\nWeeding Level: " + weedingLevel
 				+ "\nIrrigation Level: " + irrigationLevel
-				+ "=================";
+				+ "\n=================";
 	}
 
 }
