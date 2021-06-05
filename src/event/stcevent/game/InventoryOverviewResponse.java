@@ -10,7 +10,7 @@ public class InventoryOverviewResponse extends STCEvent implements Serializable 
 	private String[] items;
 	private int[] amounts;
 
-	public InventoryOverviewResponse(long respondingTo, long id, String[] items, int[] amount) {
+	public InventoryOverviewResponse(long id, long respondingTo, String[] items, int[] amount) {
 		super(id, respondingTo);
 		this.items = items;
 		this.amounts = amount;

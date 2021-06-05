@@ -10,7 +10,7 @@ public class FarmLandOverviewResponse extends STCEvent implements Serializable {
 	private String[][] terrainType;
 	private boolean[][] hasPlant;
 
-	public FarmLandOverviewResponse(long respondingTo, long id, String[][] terrainType, boolean[][] hasPlant) {
+	public FarmLandOverviewResponse(long id, long respondingTo, String[][] terrainType, boolean[][] hasPlant) {
 		super(id, respondingTo);
 		this.terrainType = terrainType;
 		this.hasPlant = hasPlant;

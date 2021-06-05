@@ -13,7 +13,7 @@ public class LandSlotTerrainOverviewResponse extends STCEvent implements Seriali
 	private int weedingLevel;
 	private int irrigationLevel;
 
-	public LandSlotTerrainOverviewResponse(long respondingTo, long id, String terrainType, boolean hasPlant, int infestationLevel, int weedingLevel, int irrigationLevel) {
+	public LandSlotTerrainOverviewResponse(long id, long respondingTo, String terrainType, boolean hasPlant, int infestationLevel, int weedingLevel, int irrigationLevel) {
 		super(id, respondingTo);
 		this.terrainType = terrainType;
 		this.hasPlant = hasPlant;
