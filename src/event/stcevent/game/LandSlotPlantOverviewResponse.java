@@ -21,7 +21,7 @@ public class LandSlotPlantOverviewResponse extends STCEvent implements Serializa
 		String string = "\n====Plant====\n"
 				+ "Plant type: " + plantType + "\nHarvestable";
 		if (approximateTimeUntilHarvestable != 0) {
-			string += " in " + approximateTimeUntilHarvestable + "s";
+			string += " in " + approximateTimeUntilHarvestable + "s\n";
 		}
 		string += "=============";
 		return string;
