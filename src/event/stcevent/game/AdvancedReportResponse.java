@@ -89,7 +89,7 @@ public class AdvancedReportResponse extends STCEvent {
 	}
 
 	private String millisToDate(long millis) {
-		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDateTime();
+		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.of("UTC")).toLocalDateTime();
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, HH:mm:ss");
 		return localDate.format(dateFormatter);
 	}

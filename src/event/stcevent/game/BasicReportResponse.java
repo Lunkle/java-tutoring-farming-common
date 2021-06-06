@@ -44,7 +44,7 @@ public class BasicReportResponse extends STCEvent {
 				+ "\nPaid for on " + millisToDate(paymentTime)
 				+ "\nNumber of sessions completed: " + numSessions
 				+ "\nActive time: " + activeTime / 3600000 + "h " + (activeTime % 3600000) / 60000 + "m " + (activeTime % 60000) / 1000 + "s"
-				+ "\nEfficiency: " + formatDecimal(100 * efficiency) + "%"
+				+ "\nAverage efficiency: " + formatDecimal(100 * efficiency) + "%"
 				+ "\nTotal Yield:"
 				+ "\n\t========Total Yield=========";
 		for (int i = 0; i < harvestItems.length; i++) {
@@ -56,7 +56,7 @@ public class BasicReportResponse extends STCEvent {
 	}
 
 	private String millisToDate(long millis) {
-		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDateTime();
+		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.of("UTC")).toLocalDateTime();
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, HH:mm:ss");
 		return localDate.format(dateFormatter);
 	}
