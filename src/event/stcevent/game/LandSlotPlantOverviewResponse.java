@@ -16,6 +16,14 @@ public class LandSlotPlantOverviewResponse extends STCEvent implements Serializa
 		this.approximateTimeUntilHarvestable = approximateTimeUntilHarvestable;
 	}
 
+	public String getPlantType() {
+		return plantType;
+	}
+
+	public int getApproximateTimeUntilHarvestable() {
+		return approximateTimeUntilHarvestable;
+	}
+
 	@Override
 	public String getDescription() {
 		String string = "\n====Plant====\n"

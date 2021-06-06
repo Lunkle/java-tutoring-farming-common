@@ -12,6 +12,10 @@ public class SowSeedFailResponse extends STCEvent {
 		this.failReason = failReason;
 	}
 
+	public String getFailReason() {
+		return failReason;
+	}
+
 	@Override
 	public String getDescription() {
 		return "Failed to sow seed\n " + failReason;
