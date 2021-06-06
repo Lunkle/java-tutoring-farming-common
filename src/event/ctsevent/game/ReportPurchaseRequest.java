@@ -19,6 +19,22 @@ public class ReportPurchaseRequest extends CTSEvent {
 		this.type = type;
 	}
 
+	public int getYear() {
+		return year;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public String getType() {
+		return type;
+	}
+
 	@Override
 	public String getDescription() {
 		String string = "Purchasing ";
