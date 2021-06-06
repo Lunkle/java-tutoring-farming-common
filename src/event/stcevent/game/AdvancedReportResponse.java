@@ -50,8 +50,12 @@ public class AdvancedReportResponse extends STCEvent {
 				+ "\nAdvanced report type for " + MONTHS[month - 1] + " " + day + ", " + year
 				+ "\nNumber of sessions completed: " + sessionLengths.length
 				+ "\nNet harvest value: " + totalNetHarvest + " gold coins"
-				+ "\nActive time: " + totalActive / MILLISECONDS_PER_HOUR + "h " + (totalActive % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE + "m " + (totalActive % MILLISECONDS_PER_MINUTE) / 1000 + "s"
-				+ "\nWasted time: " + totalWasted / MILLISECONDS_PER_HOUR + "h " + (totalWasted % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE + "m " + (totalWasted % MILLISECONDS_PER_MINUTE) / 1000 + "s"
+				+ "\nActive time: " + totalActive / MILLISECONDS_PER_HOUR + "h "
+				+ (totalActive % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE + "m "
+				+ (totalActive % MILLISECONDS_PER_MINUTE) / 1000 + "s"
+				+ "\nWasted time: " + totalWasted / MILLISECONDS_PER_HOUR + "h "
+				+ (totalWasted % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE + "m "
+				+ (totalWasted % MILLISECONDS_PER_MINUTE) / 1000 + "s"
 				+ "\nTotal Yield:"
 				+ "\n\t========Total Yield=========";
 		for (int i = 0; i < harvestItems.length; i++) {
