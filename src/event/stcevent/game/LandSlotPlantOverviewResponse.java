@@ -6,7 +6,7 @@ import event.stcevent.STCEvent;
 
 public class LandSlotPlantOverviewResponse extends STCEvent implements Serializable {
 
-	private static final long serialVersionUID = -9180974157532158963L;
+	private static final long serialVersionUID = -4454796821747924108L;
 	private String plantType;
 	private int approximateTimeUntilHarvestable;
 
@@ -14,6 +14,14 @@ public class LandSlotPlantOverviewResponse extends STCEvent implements Serializa
 		super(id, respondingTo);
 		this.plantType = plantType;
 		this.approximateTimeUntilHarvestable = approximateTimeUntilHarvestable;
+	}
+
+	public String getPlantType() {
+		return plantType;
+	}
+
+	public int getApproximateTimeUntilHarvestable() {
+		return approximateTimeUntilHarvestable;
 	}
 
 	@Override
