@@ -1,20 +1,20 @@
-package event.stcevent.login;
+package event.stcevent.session;
 
 import java.io.Serializable;
 
 import event.stcevent.STCEvent;
 
-public class LoginSuccess extends STCEvent implements Serializable {
+public class SaveSuccessResponse extends STCEvent implements Serializable {
 
 	private static final long serialVersionUID = -5831927914016495651L;
 
-	public LoginSuccess(long id, long respondingTo) {
+	public SaveSuccessResponse(long id, long respondingTo) {
 		super(id, respondingTo);
 	}
 
 	@Override
 	public String getDescription() {
-		return "Successful login";
+		return "Successful save";
 	}
 
 }
