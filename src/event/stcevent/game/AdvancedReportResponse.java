@@ -6,6 +6,8 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 import event.stcevent.STCEvent;
 
@@ -66,8 +68,18 @@ public class AdvancedReportResponse extends STCEvent {
 				+ "\nAverage Efficiency: " + formatDecimal(100 * averageEfficiency) + "%"
 				+ "\nTotal Yield:"
 				+ "\n\t========Total Yield=========";
-		for (int i = 0; i < harvestItems.length; i++) {
-			string += "\n\t" + harvestAmounts[i] + "x " + harvestItems[i];
+		Map<String, Integer> harvest = new HashMap<>();
+		for (int sessionIndex = 0; sessionIndex < harvestItems.length; sessionIndex++) {
+			for (int itemIndex = 0; itemIndex < harvestItems[sessionIndex].length; itemIndex++) {
+				Integer prevValue = harvest.get(harvestItems[sessionIndex][itemIndex]);
+				if (prevValue == null) {
+					prevValue = 0;
+				}
+				harvest.put(harvestItems[sessionIndex][itemIndex], prevValue + harvestAmounts[sessionIndex][itemIndex]);
+			}
+		}
+		for (String item : harvest.keySet()) {
+			string += "\n\t" + harvest.get(item) + "x " + item;
 		}
 		string += "\n\t============================\n\n";
 		double[] amounts = getAmounts();
