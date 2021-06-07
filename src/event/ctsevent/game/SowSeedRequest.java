@@ -42,7 +42,7 @@ public class SowSeedRequest extends CTSEvent {
 
 	@Override
 	public String getDescription() {
-		return "Sowing " + seedName + " seed at (row: " + row + ", col: " + col + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
+		return "Sowing " + seedName + " at (row: " + row + ", col: " + col + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
 	}
 
 }
