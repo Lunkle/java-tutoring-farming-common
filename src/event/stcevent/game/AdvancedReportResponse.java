@@ -60,16 +60,16 @@ public class AdvancedReportResponse extends STCEvent {
 		double averageEfficiency = efficienctTimeSum / (double) totalActive;
 		String string = "\n==================================Advanced Report================================="
 				+ "\nAdvanced report type for " + MONTHS[month - 1] + " " + day + ", " + year
-				+ "\nPaid for on " + millisToDate(paymentTime)
+				+ "\nPurchased on                  " + millisToDate(paymentTime)
 				+ "\nNumber of sessions completed: " + sessionLengths.length
-				+ "\nGross harvest value: " + grossHarvest + " gold coins"
-				+ "\nGross expense value: " + grossExpenses + " gold coins"
-				+ "\nNet harvest value: " + (grossHarvest - grossExpenses) + " gold coins"
-				+ "\nActive time: " + totalActive / MILLISECONDS_PER_HOUR + "h "
-				+ (totalActive % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE + "m "
-				+ (totalActive % MILLISECONDS_PER_MINUTE) / 1000 + "s"
-				+ "\nAverage Efficiency: " + formatDecimal(100 * averageEfficiency) + "%"
-				+ "\nTotal Yield:"
+				+ "\nGross harvest value:          " + grossHarvest + " gold coins"
+				+ "\nGross expense value:          " + grossExpenses + " gold coins"
+				+ "\nNet harvest value:            " + (grossHarvest - grossExpenses) + " gold coins"
+				+ "\nActive time:                  " + formatDuration(totalActive)
+				+ "\nAverage Efficiency:           " + formatDecimal4DP(100 * averageEfficiency) + "%"
+				+ "\n\n" + allSessionDetails()
+				+ "\t======================================================\n";
+		string += "\nTotal Yield:"
 				+ "\n\t========Total Yield=========";
 		Map<String, Integer> harvest = getTotalHarvest();
 		for (String item : harvest.keySet()) {
@@ -80,12 +80,96 @@ public class AdvancedReportResponse extends STCEvent {
 		return string;
 	}
 
+	private String allSessionDetails() {
+		String sessionDetails = "";
+		for (int s = 0; s < sessionEnds.length; s++) {
+			String sessionDetail = "\t===================== Session " + (s + 1) + " ====================";
+			while (sessionDetail.length() < 55) {
+				sessionDetail += "=";
+			}
+			sessionDetail += "\n\tSession start:      " + formatDuration((sessionEnds[s] - sessionLengths[s]) % MILLISECONDS_PER_DAY);
+			sessionDetail += "\n\tSession length:     " + formatDuration(sessionLengths[s]);
+			sessionDetail += "\n\tSession efficiency: " + formatDecimal4DP(100 * efficiencies[s]) + "%";
+			sessionDetail += "\n\t\t=== Session Harvest =====\t=== Session Expenses ====\t=== Session Net Yield ===\n";
+			String[] sessionHarvestItems = harvestItems[s];
+			int[] sessionHarvestAmounts = harvestAmounts[s];
+			String[] sessionExpenseItems = expenseItems[s];
+			int[] sessionExpenseAmounts = expenseAmounts[s];
+
+			boolean[] expenseItemUsed = new boolean[sessionExpenseItems.length];
+
+			for (int j = 0; j < sessionHarvestItems.length; j++) {
+				String harvestItemName = sessionHarvestItems[j];
+				int harvestItemAmount = sessionHarvestAmounts[j];
+				int containIndex = contains(sessionExpenseItems, harvestItemName);
+				String harvestText = harvestItemAmount + "x " + harvestItemName;
+				sessionDetail += "\t\t" + harvestText;
+				int numOfTabsNeeded = (32 - harvestText.length()) / 8 + (harvestText.length() % 8 == 0 ? 0 : 1);
+				for (int k = 0; k < numOfTabsNeeded; k++) {
+					sessionDetail += '\t';
+				}
+				if (containIndex != -1) {
+					expenseItemUsed[containIndex] = true;
+					int expenseItemAmount = sessionExpenseAmounts[containIndex];
+					String expenseText = expenseItemAmount + "x " + sessionExpenseItems[containIndex];
+					sessionDetail += expenseText;
+					numOfTabsNeeded = (32 - expenseText.length()) / 8 + (expenseText.length() % 8 == 0 ? 0 : 1);
+					for (int k = 0; k < numOfTabsNeeded; k++) {
+						sessionDetail += '\t';
+					}
+					sessionDetail += (harvestItemAmount - expenseItemAmount) + "x " + harvestItemName;
+				} else {
+					sessionDetail += "\t\t\t\t";
+					sessionDetail += harvestItemAmount + "x " + harvestItemName;
+				}
+				sessionDetail += '\n';
+			}
+			for (int j = 0; j < expenseItemUsed.length; j++) {
+				if (expenseItemUsed[j]) {
+					continue;
+				}
+				sessionDetail += "\t\t\t\t\t\t";
+				String expenseItemName = sessionExpenseItems[j];
+				int expenseItemAmount = sessionExpenseAmounts[j];
+				String expenseText = expenseItemAmount + "x " + expenseItemName;
+				sessionDetail += expenseText;
+				int numOfTabsNeeded = (32 - expenseText.length()) / 8 + (expenseText.length() % 8 == 0 ? 0 : 1);
+				for (int k = 0; k < numOfTabsNeeded; k++) {
+					sessionDetail += '\t';
+				}
+				sessionDetail += -expenseItemAmount + "x " + expenseItemName;
+				sessionDetail += '\n';
+			}
+			String bottom = "\t\t=========================\t=========================\t=========================\n";
+			sessionDetail += bottom;
+			sessionDetails += sessionDetail;
+		}
+		return sessionDetails;
+	}
+
+	private static int contains(String[] items, String item) {
+		for (int i = 0; i < items.length; i++) {
+			if (items[i].equals(item)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public static void main(String[] args) {
+		AdvancedReportResponse advancedReportResponse = new AdvancedReportResponse(0, 0, 10, 2021, 12, 21,
+				new long[] { 3_600_000, 3_600_000 * 3 }, new long[] { 3_600_000, 3_600_000 }, new double[] { 0.25, 1 },
+				new int[] { 4, 656 }, new String[][] { { "Apple", "Orange" }, { "Poop" } }, new int[][] { { 1, 8 }, { 656 } },
+				new int[] { 2, 528 }, new String[][] { { "Apple", "Orange" }, { "Samsung S10" } }, new int[][] { { 1, 1 }, { 626 } });
+		System.out.println(advancedReportResponse.getDescription());
+	}
+
 	private String drawGraph() {
 		String string = "";
 		double[] amounts = getAmounts();
-		double max = max(amounts);
-		for (double scale = Math.max(max, 20); scale > 0; scale -= 1) {
-			string += "\n" + scale + "\t|";
+		double max = Math.max(24, max(amounts));
+		for (double scale = max; scale > 0; scale -= max / 24) {
+			string += "\n" + formatDecimal1DP(scale) + "\t|";
 			for (int hour = 0; hour < 24; hour++) {
 				if (amounts[hour] >= scale) {
 					string += "[$]";
@@ -114,14 +198,26 @@ public class AdvancedReportResponse extends STCEvent {
 		return harvest;
 	}
 
+	private String formatDuration(long millis) {
+		return millis / MILLISECONDS_PER_HOUR + "h "
+				+ (millis % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE + "m "
+				+ (millis % MILLISECONDS_PER_MINUTE) / 1000 + "s";
+	}
+
 	private String millisToDate(long millis) {
 		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.of("UTC")).toLocalDateTime();
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, HH:mm:ss");
 		return localDate.format(dateFormatter);
 	}
 
-	private String formatDecimal(double d) {
+	private String formatDecimal4DP(double d) {
 		DecimalFormat df = new DecimalFormat("#.####");
+		df.setRoundingMode(RoundingMode.CEILING);
+		return df.format(d);
+	}
+
+	private String formatDecimal1DP(double d) {
+		DecimalFormat df = new DecimalFormat("#.#");
 		df.setRoundingMode(RoundingMode.CEILING);
 		return df.format(d);
 	}
