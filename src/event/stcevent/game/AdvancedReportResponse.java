@@ -22,15 +22,15 @@ public class AdvancedReportResponse extends STCEvent {
 	private long paymentTime;
 	private long[] sessionEnds, sessionLengths;
 	private double[] efficiencies;
-	private long[] harvests, expenses;
+	private int[] harvests, expenses;
 	private String[][] harvestItems, expenseItems;
 	private int[][] harvestAmounts, expenseAmounts;
 
 	public AdvancedReportResponse(long id, long respondingTo, long paymentTime,
 			int year, int month, int day,
 			long[] sessionEnds, long[] sessionLengths, double[] efficiencies,
-			long[] harvests, String[][] harvestItems, int[][] harvestAmounts,
-			long[] expenses, String[][] expenseItems, int[][] expenseAmounts) {
+			int[] grossHarvests, String[][] harvestItems, int[][] harvestAmounts,
+			int[] grossExpenses, String[][] expenseItems, int[][] expenseAmounts) {
 		super(id, respondingTo);
 		this.paymentTime = paymentTime;
 		this.year = year;
@@ -39,10 +39,10 @@ public class AdvancedReportResponse extends STCEvent {
 		this.sessionEnds = sessionEnds;
 		this.sessionLengths = sessionLengths;
 		this.efficiencies = efficiencies;
-		this.harvests = harvests;
+		this.harvests = grossHarvests;
 		this.harvestItems = harvestItems;
 		this.harvestAmounts = harvestAmounts;
-		this.expenses = expenses;
+		this.expenses = grossExpenses;
 		this.expenseItems = expenseItems;
 		this.expenseAmounts = expenseAmounts;
 	}
@@ -187,7 +187,7 @@ public class AdvancedReportResponse extends STCEvent {
 		return efficiencies;
 	}
 
-	public long[] getHarvests() {
+	public int[] getHarvests() {
 		return harvests;
 	}
 
@@ -199,7 +199,7 @@ public class AdvancedReportResponse extends STCEvent {
 		return harvestAmounts;
 	}
 
-	public long[] getExpenses() {
+	public int[] getExpenses() {
 		return expenses;
 	}
 
