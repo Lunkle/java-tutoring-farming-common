@@ -156,13 +156,13 @@ public class AdvancedReportResponse extends STCEvent {
 		return -1;
 	}
 
-	public static void main(String[] args) {
-		AdvancedReportResponse advancedReportResponse = new AdvancedReportResponse(0, 0, 10, 2021, 12, 21,
-				new long[] { 3_600_000, 3_600_000 * 3 }, new long[] { 3_600_000, 3_600_000 }, new double[] { 0.25, 1 },
-				new int[] { 4, 656 }, new String[][] { { "Apple", "Orange" }, { "Poop" } }, new int[][] { { 1, 8 }, { 656 } },
-				new int[] { 2, 528 }, new String[][] { { "Apple", "Orange" }, { "Samsung S10" } }, new int[][] { { 1, 1 }, { 626 } });
-		System.out.println(advancedReportResponse.getDescription());
-	}
+//	public static void main(String[] args) {
+//		AdvancedReportResponse advancedReportResponse = new AdvancedReportResponse(0, 0, 10, 2021, 12, 21,
+//				new long[] { 3_600_000, 3_600_000 * 3 }, new long[] { 3_600_000, 3_600_000 }, new double[] { 0.25, 1 },
+//				new int[] { 4, 656 }, new String[][] { { "Apple", "Orange" }, { "Poop" } }, new int[][] { { 1, 8 }, { 656 } },
+//				new int[] { 2, 528 }, new String[][] { { "Apple", "Orange" }, { "Samsung S10" } }, new int[][] { { 1, 1 }, { 626 } });
+//		System.out.println(advancedReportResponse.getDescription());
+//	}
 
 	private String drawGraph() {
 		String string = "";
