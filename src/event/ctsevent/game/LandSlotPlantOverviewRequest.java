@@ -37,7 +37,7 @@ public class LandSlotPlantOverviewRequest extends CTSEvent implements Serializab
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Fetching land slot plant overview (row: " + row + ", col: " + col + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
 	}
 

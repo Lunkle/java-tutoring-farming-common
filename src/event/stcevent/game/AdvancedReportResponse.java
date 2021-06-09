@@ -48,7 +48,7 @@ public class AdvancedReportResponse extends STCEvent {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		String string = generalInfo();
 		string += allSessionDetails();
 		string += drawGraph();
@@ -156,7 +156,7 @@ public class AdvancedReportResponse extends STCEvent {
 				new long[] { (long) (3_600_000 * 13.5), (long) (3_600_000 * 18.5) }, new long[] { 4 * 3_600_000, 5 * 3_600_000 }, new double[] { 0.25, 1 },
 				new int[] { 400, 656 }, new String[][] { { "Apple", "Orange" }, { "Poop" } }, new int[][] { { 1, 8 }, { 656 } },
 				new int[] { 200, 528 }, new String[][] { { "Apple", "Orange" }, { "Samsung S10" } }, new int[][] { { 1, 1 }, { 626 } });
-		System.out.println(advancedReportResponse.getDescription());
+		System.out.println(advancedReportResponse.doGetDescription());
 	}
 
 	private String drawGraph() {

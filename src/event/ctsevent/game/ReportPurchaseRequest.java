@@ -36,7 +36,7 @@ public class ReportPurchaseRequest extends CTSEvent {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		String string = "Purchasing ";
 		String lowerCase = type.toLowerCase();
 		if ("basic".equals(lowerCase) || "advanced".equals(lowerCase)) {

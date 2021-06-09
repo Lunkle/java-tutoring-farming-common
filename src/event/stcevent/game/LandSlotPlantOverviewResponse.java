@@ -27,7 +27,7 @@ public class LandSlotPlantOverviewResponse extends STCEvent implements Serializa
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		String string = "\n====Plant====\n"
 				+ "Plant type: " + plantType + "\nHarvestable";
 		if (timeUntilHarvestable != 0) {

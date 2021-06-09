@@ -38,7 +38,7 @@ public class BasicReportResponse extends STCEvent {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		String string = "\n============Basic Report============"
 				+ "\nBasic report type for " + MONTHS[month - 1] + " " + day + ", " + year
 				+ "\nPaid for on " + millisToDate(paymentTime)

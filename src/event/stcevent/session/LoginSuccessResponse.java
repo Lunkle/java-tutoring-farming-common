@@ -13,7 +13,7 @@ public class LoginSuccessResponse extends STCEvent implements Serializable {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Successful login";
 	}
 

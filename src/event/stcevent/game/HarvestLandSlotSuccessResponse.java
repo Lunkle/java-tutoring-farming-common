@@ -25,7 +25,7 @@ public class HarvestLandSlotSuccessResponse extends STCEvent implements Serializ
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		String string = "\n==Harvest===\n";
 		for (int i = 0; i < items.length; i++) {
 			string += items[i] + ' ' + amounts[i] + '\n';

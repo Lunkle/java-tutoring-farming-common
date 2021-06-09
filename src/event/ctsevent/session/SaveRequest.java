@@ -13,7 +13,7 @@ public class SaveRequest extends CTSEvent implements Serializable {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Saving";
 	}
 

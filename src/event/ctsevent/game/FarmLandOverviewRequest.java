@@ -25,7 +25,7 @@ public class FarmLandOverviewRequest extends CTSEvent implements Serializable {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Fetching farmland overview (" + x + ", " + y + ")";
 	}
 

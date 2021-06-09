@@ -22,7 +22,7 @@ public class HarvestLandSlotFailResponse extends STCEvent implements Serializabl
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Could not harvest because " + failMessage;
 	}
 

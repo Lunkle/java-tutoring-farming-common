@@ -11,7 +11,7 @@ public class ReportPricingResponse extends STCEvent {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "\n====Report Pricing===="
 				+ "\nBasic report: 10 gold coins"
 				+ "\nAdvanced report: 15 gold coins"

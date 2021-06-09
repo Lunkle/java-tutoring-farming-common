@@ -13,7 +13,7 @@ public class PlantDoesNotExistResponse extends STCEvent implements Serializable 
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Plant does not exist.";
 	}
 

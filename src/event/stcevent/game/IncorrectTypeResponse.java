@@ -11,7 +11,7 @@ public class IncorrectTypeResponse extends STCEvent {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Incorrect type";
 	}
 

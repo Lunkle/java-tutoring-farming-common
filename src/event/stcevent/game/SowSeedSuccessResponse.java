@@ -11,7 +11,7 @@ public class SowSeedSuccessResponse extends STCEvent {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Successfully sowed seed";
 	}
 

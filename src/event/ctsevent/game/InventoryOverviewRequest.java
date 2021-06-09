@@ -13,7 +13,7 @@ public class InventoryOverviewRequest extends CTSEvent implements Serializable {
 	}
 
 	@Override
-	public String getDescription() {
+	public String doGetDescription() {
 		return "Fetching inventory overview";
 	}
 

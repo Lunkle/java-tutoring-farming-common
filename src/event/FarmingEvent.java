@@ -10,13 +10,27 @@ public abstract class FarmingEvent implements Serializable {
 	private static final long serialVersionUID = -775735702158930985L;
 	private long id;
 	private long timestamp;
+	private String[] extraMessages = new String[0];
 
 	public FarmingEvent(long id) {
 		this.id = id;
 		timestamp = System.currentTimeMillis();
 	}
 
-	public abstract String getDescription();
+	public FarmingEvent(long id, String[] extraMessages) {
+		this(id);
+		this.extraMessages = extraMessages;
+	}
+
+	public String getDescription() {
+		String description = doGetDescription();
+		for (String s : extraMessages) {
+			description += s;
+		}
+		return description;
+	}
+
+	protected abstract String doGetDescription();
 
 	public long getId() {
 		return id;
