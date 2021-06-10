@@ -1,5 +1,7 @@
 package event.ctsevent.game;
 
+import java.time.ZoneId;
+
 import event.ctsevent.CTSEvent;
 
 public class ReportPurchaseRequest extends CTSEvent {
@@ -10,6 +12,7 @@ public class ReportPurchaseRequest extends CTSEvent {
 	private int month;
 	private int day;
 	private String type;
+	private ZoneId zoneId = ZoneId.systemDefault();
 
 	public ReportPurchaseRequest(long id, int year, int month, int day, String type) {
 		super(id);
@@ -35,6 +38,10 @@ public class ReportPurchaseRequest extends CTSEvent {
 		return type;
 	}
 
+	public ZoneId getZoneId() {
+		return zoneId;
+	}
+
 	@Override
 	public String doGetDescription() {
 		String string = "Purchasing ";
@@ -52,5 +59,4 @@ public class ReportPurchaseRequest extends CTSEvent {
 		}
 		return string;
 	}
-
 }
