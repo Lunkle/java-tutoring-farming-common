@@ -81,9 +81,9 @@ public class AdvancedReportResponse extends STCEvent {
 		for (int i = 0; i < sessionEnds.length; i++) {
 			String sessionDetail = "\n\t===Session " + (i + 1)
 					+ "======================================================" + repeat(6 - numDigits(i + 1), '=');
-			sessionDetail += "\n\tStart time:        \t" + formatTime((sessionEnds[i] - sessionLengths[i]) % MS_PER_DAY);
+			sessionDetail += "\n\tStart time:        \t" + millisToDate(sessionEnds[i] - sessionLengths[i]);
 			sessionDetail += "\n\tSession length:    \t" + formatDuration(sessionLengths[i]);
-			sessionDetail += "\n\tEnd time:          \t" + formatTime((sessionEnds[i]) % MS_PER_DAY);
+			sessionDetail += "\n\tEnd time:          \t" + millisToDate(sessionEnds[i]);
 			sessionDetail += "\n\tAverage efficiency:\t" + formatDecimal4DP(100 * efficiencies[i]) + "%";
 			sessionDetail += "\n\t---Harvest-------------|---Expenses------------|---Net Profit----------";
 			boolean[] expenseItemUsed = new boolean[expenseItems[i].length];
@@ -151,14 +151,6 @@ public class AdvancedReportResponse extends STCEvent {
 		return sessionDetails + "\n\t=======================================================================\n";
 	}
 
-	public static void main(String[] args) {
-		AdvancedReportResponse advancedReportResponse = new AdvancedReportResponse(0, 0, 10, 2021, 12, 21,
-				new long[] { (long) (3_600_000 * 13.5), (long) (3_600_000 * 18.5) }, new long[] { 4 * 3_600_000, 5 * 3_600_000 }, new double[] { 0.25, 1 },
-				new int[] { 400, 656 }, new String[][] { { "Apple", "Orange" }, { "Poop" } }, new int[][] { { 1, 8 }, { 656 } },
-				new int[] { 200, 528 }, new String[][] { { "Apple", "Orange" }, { "Samsung S10" } }, new int[][] { { 1, 1 }, { 626 } });
-		System.out.println(advancedReportResponse.doGetDescription());
-	}
-
 	private String drawGraph() {
 		String string = "";
 		double[] harvestAmounts = hourlyAmounts(harvests);
@@ -221,12 +213,6 @@ public class AdvancedReportResponse extends STCEvent {
 		return harvest;
 	}
 
-	private String formatTime(long millis) {
-		return String.format("%02d", millis / MS_PER_HOUR) + ':'
-				+ String.format("%02d", (millis % MS_PER_HOUR) / MS_PER_MINUTE) + ':'
-				+ String.format("%02d", (millis % MS_PER_MINUTE) / 1000);
-	}
-
 	private String formatDuration(long millis) {
 		return millis / MS_PER_HOUR + "h "
 				+ (millis % MS_PER_HOUR) / MS_PER_MINUTE + "m "
@@ -234,7 +220,7 @@ public class AdvancedReportResponse extends STCEvent {
 	}
 
 	private String millisToDate(long millis) {
-		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.of("UTC")).toLocalDateTime();
+		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDateTime();
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, HH:mm:ss");
 		return localDate.format(dateFormatter);
 	}
@@ -271,10 +257,14 @@ public class AdvancedReportResponse extends STCEvent {
 				continue;
 			}
 			double rate = array[i] / (sessionEnd - sessionStart);
-			amounts[startHour] += rate * (1 - (sessionStart - startHour));
+			if (startHour >= 0) {
+				amounts[startHour] += rate * (1 - (sessionStart - startHour));
+			}
 			amounts[endHour] += rate * (sessionEnd - endHour);
 			for (int hour = startHour + 1; hour < endHour; hour++) {
-				amounts[hour] += rate;
+				if (hour >= 0) {
+					amounts[hour] += rate;
+				}
 			}
 		}
 		return amounts;
