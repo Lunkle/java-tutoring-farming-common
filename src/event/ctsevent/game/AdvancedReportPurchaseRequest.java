@@ -13,7 +13,7 @@ public class AdvancedReportPurchaseRequest extends CTSEvent {
 	private int day;
 	private ZoneId zoneId = ZoneId.systemDefault();
 
-	public AdvancedReportPurchaseRequest(long id, int year, int month, int day, String type) {
+	public AdvancedReportPurchaseRequest(long id, int year, int month, int day) {
 		super(id);
 		this.year = year;
 		this.month = month;

@@ -13,7 +13,7 @@ public class BasicReportPurchaseRequest extends CTSEvent {
 	private int day;
 	private ZoneId zoneId = ZoneId.systemDefault();
 
-	public BasicReportPurchaseRequest(long id, int year, int month, int day, String type) {
+	public BasicReportPurchaseRequest(long id, int year, int month, int day) {
 		super(id);
 		this.year = year;
 		this.month = month;
