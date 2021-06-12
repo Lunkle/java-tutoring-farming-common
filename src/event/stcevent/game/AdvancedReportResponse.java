@@ -1,5 +1,7 @@
 package event.stcevent.game;
 
+import static java.lang.Math.ceil;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.time.Instant;
@@ -175,7 +177,7 @@ public class AdvancedReportResponse extends STCEvent {
 	}
 
 	private int tabsNeeded(String text) {
-		return (24 - text.length()) / 8 + (text.length() % 8 == 0 ? 0 : 1);
+		return (int) ceil((24 - text.length()) / 8.0);
 	}
 
 	private String repeat(int amount, char character) {
