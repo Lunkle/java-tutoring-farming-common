@@ -40,4 +40,8 @@ public abstract class FarmingEvent implements Serializable {
 		return timestamp;
 	}
 
+	public void setExtraMessages(String[] extraMessages) {
+		this.extraMessages = extraMessages;
+	}
+
 }
