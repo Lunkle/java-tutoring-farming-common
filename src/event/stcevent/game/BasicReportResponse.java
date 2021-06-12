@@ -63,7 +63,7 @@ public class BasicReportResponse extends STCEvent {
 
 	private String formatDecimal(double d) {
 		DecimalFormat df = new DecimalFormat("#.####");
-		df.setRoundingMode(RoundingMode.CEILING);
+		df.setRoundingMode(RoundingMode.HALF_UP);
 		return df.format(d);
 	}
 

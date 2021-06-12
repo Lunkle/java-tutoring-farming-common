@@ -227,13 +227,13 @@ public class AdvancedReportResponse extends STCEvent {
 
 	private String formatDecimal4DP(double d) {
 		DecimalFormat df = new DecimalFormat("#.####");
-		df.setRoundingMode(RoundingMode.CEILING);
+		df.setRoundingMode(RoundingMode.HALF_UP);
 		return df.format(d);
 	}
 
 	private String formatDecimal1DP(double d) {
 		DecimalFormat df = new DecimalFormat("#.#");
-		df.setRoundingMode(RoundingMode.CEILING);
+		df.setRoundingMode(RoundingMode.HALF_UP);
 		return df.format(d);
 	}
 
