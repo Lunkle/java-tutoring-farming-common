@@ -13,7 +13,7 @@ public class SessionClosedResponse extends STCEvent implements Serializable {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Successfully closed session";
 	}
 

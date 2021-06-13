@@ -13,7 +13,7 @@ public class CloseSessionRequest extends CTSEvent implements Serializable {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Ending Session";
 	}
 

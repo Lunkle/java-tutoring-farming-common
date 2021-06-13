@@ -43,7 +43,7 @@ public class LandSlotTerrainOverviewResponse extends STCEvent implements Seriali
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "\n=====Terrain=====\n"
 				+ "Terrain type: " + terrainType
 				+ "\nHas plant: " + hasPlant

@@ -19,7 +19,7 @@ public class LoginFailResponse extends STCEvent implements Serializable {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Failed login because " + reason;
 	}
 

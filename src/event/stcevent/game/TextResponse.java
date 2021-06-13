@@ -13,7 +13,7 @@ public class TextResponse extends STCEvent {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return description;
 	}
 

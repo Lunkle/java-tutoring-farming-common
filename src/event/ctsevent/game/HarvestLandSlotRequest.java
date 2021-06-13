@@ -37,7 +37,7 @@ public class HarvestLandSlotRequest extends CTSEvent implements Serializable {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Harvesting land slot plant (" + row + ", " + col + ") of farm land (" + farmLandX + ", " + farmLandY + ")";
 	}
 

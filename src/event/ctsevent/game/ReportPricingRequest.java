@@ -11,7 +11,7 @@ public class ReportPricingRequest extends CTSEvent {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Asking about pricing";
 	}
 

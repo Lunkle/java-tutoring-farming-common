@@ -37,7 +37,7 @@ public class AdvancedReportPurchaseRequest extends CTSEvent {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		String string = "Purchasing advanced report for ";
 		if (month <= 12) {
 			string += MONTHS[month - 1] + " " + day + ", " + year;

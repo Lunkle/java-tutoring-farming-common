@@ -13,7 +13,7 @@ public class SaveSuccessResponse extends STCEvent implements Serializable {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Successful save";
 	}
 

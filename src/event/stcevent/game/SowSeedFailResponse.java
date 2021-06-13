@@ -17,7 +17,7 @@ public class SowSeedFailResponse extends STCEvent {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Failed to sow seed\n " + failReason;
 	}
 

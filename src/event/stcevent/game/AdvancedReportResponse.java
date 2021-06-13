@@ -48,7 +48,7 @@ public class AdvancedReportResponse extends STCEvent {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		String string = generalInfo();
 		string += allSessionDetails();
 		string += drawGraph();

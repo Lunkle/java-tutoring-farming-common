@@ -17,7 +17,7 @@ public class ItemOverviewRequest extends CTSEvent {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Asking about a " + itemName;
 	}
 

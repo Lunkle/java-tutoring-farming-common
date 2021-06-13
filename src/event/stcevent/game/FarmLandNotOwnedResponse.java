@@ -13,7 +13,7 @@ public class FarmLandNotOwnedResponse extends STCEvent implements Serializable {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "You don't own this farm land";
 	}
 

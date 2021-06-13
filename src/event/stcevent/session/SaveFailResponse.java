@@ -13,7 +13,7 @@ public class SaveFailResponse extends STCEvent implements Serializable {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Failed save";
 	}
 

@@ -25,7 +25,7 @@ public class LoginRequest extends CTSEvent implements Serializable {
 	}
 
 	@Override
-	public String doGetDescription() {
+	protected String doGetDescription() {
 		return "Attempting login";
 	}
 
