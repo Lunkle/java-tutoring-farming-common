@@ -12,13 +12,15 @@ public class ItemOverviewResponse extends STCEvent {
 	private String growsInto;
 	private int nutritionValue;
 	private long sellsIn;
+	private long growsIn;
 
-	public ItemOverviewResponse(long id, long respondingTo, String description, int value, long sellsIn, String growsInto, int nutritionValue) {
+	public ItemOverviewResponse(long id, long respondingTo, String description, int value, long sellsIn, String growsInto, long growsIn, int nutritionValue) {
 		super(id, respondingTo);
 		this.description = description;
 		this.value = value;
 		this.sellsIn = sellsIn;
 		this.growsInto = growsInto;
+		this.growsIn = growsIn;
 		this.nutritionValue = nutritionValue;
 	}
 
@@ -30,7 +32,10 @@ public class ItemOverviewResponse extends STCEvent {
 				+ "\nSells in: " + formatDuration(sellsIn);
 		if (growsInto != null) {
 			string += "\nGrows: " + growsInto
-					+ "\nNutrition: " + nutritionValue;
+					+ "\nGrows in: " + formatDuration(growsIn);
+		}
+		if (nutritionValue != 0) {
+			string += "\nNutrition: " + nutritionValue;
 		}
 		string += "\n===============================";
 		return string;
