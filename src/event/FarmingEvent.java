@@ -44,4 +44,8 @@ public abstract class FarmingEvent implements Serializable {
 		this.extraMessages = extraMessages;
 	}
 
+	@Override
+	public String toString() {
+		return getDescription();
+	}
 }
