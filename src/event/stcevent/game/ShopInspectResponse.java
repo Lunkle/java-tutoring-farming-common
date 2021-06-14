@@ -32,10 +32,16 @@ public class ShopInspectResponse extends STCEvent {
 
 	@Override
 	protected String doGetDescription() {
-		return "\n===Shop Inspect============="
-				+ "\nSelling: " + amount + "x " + itemName
-				+ "\nSold in: " + formatDuration(soldIn)
-				+ "\n============================";
+		String string = "\n===Shop Inspect============="
+				+ "\nSelling: " + amount + "x " + itemName;
+
+		if (soldIn == 0) {
+			string += "\nSold!";
+		} else {
+			string += "\nSold in: " + formatDuration(soldIn);
+		}
+		string += "\n============================";
+		return string;
 	}
 
 	private String formatDuration(long millis) {
