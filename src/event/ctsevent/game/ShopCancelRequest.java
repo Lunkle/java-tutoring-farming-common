@@ -14,6 +14,14 @@ public class ShopCancelRequest extends CTSEvent {
 		this.col = col;
 	}
 
+	public int getRow() {
+		return row;
+	}
+
+	public int getCol() {
+		return col;
+	}
+
 	@Override
 	protected String doGetDescription() {
 		return "Cancelling sale at shop slot (" + row + ", " + col + ")";
