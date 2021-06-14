@@ -4,7 +4,7 @@ import event.ctsevent.CTSEvent;
 
 public class ShopSellRequest extends CTSEvent {
 
-	private static final long serialVersionUID = -6575795066621221531L;
+	private static final long serialVersionUID = -7388115637557654817L;
 	private int row;
 	private int col;
 	private String itemName;
@@ -16,6 +16,22 @@ public class ShopSellRequest extends CTSEvent {
 		this.col = col;
 		this.itemName = itemName;
 		this.amount = amount;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getCol() {
+		return col;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public int getAmount() {
+		return amount;
 	}
 
 	@Override

@@ -18,6 +18,18 @@ public class ShopInspectResponse extends STCEvent {
 		this.soldIn = soldIn;
 	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public long getSoldIn() {
+		return soldIn;
+	}
+
 	@Override
 	protected String doGetDescription() {
 		return "\n===Shop Inspect============="

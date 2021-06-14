@@ -4,7 +4,7 @@ import event.stcevent.STCEvent;
 
 public class ShopOverviewResponse extends STCEvent {
 
-	private static final long serialVersionUID = 4287075609554902733L;
+	private static final long serialVersionUID = -8016580920617417002L;
 	private boolean[][] hasItem;
 	private boolean[][] isSold;
 
@@ -12,6 +12,14 @@ public class ShopOverviewResponse extends STCEvent {
 		super(id, respondingTo);
 		this.hasItem = hasItem;
 		this.isSold = isSold;
+	}
+
+	public boolean[][] getHasItem() {
+		return hasItem;
+	}
+
+	public boolean[][] getIsSold() {
+		return isSold;
 	}
 
 	@Override

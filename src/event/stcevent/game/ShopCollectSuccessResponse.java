@@ -9,15 +9,23 @@ public class ShopCollectSuccessResponse extends STCEvent {
 	private int amount;
 	private int value;
 
-	public static void main(String[] args) {
-		System.out.println(new ShopCollectSuccessResponse(0, 0, "Pig heart", 5, 2289).getDescription());
-	}
-
 	public ShopCollectSuccessResponse(long id, long respondingTo, String itemName, int amount, int value) {
 		super(id, respondingTo);
 		this.itemName = itemName;
 		this.amount = amount;
 		this.value = value;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public int getValue() {
+		return value;
 	}
 
 	@Override
