@@ -4,6 +4,7 @@ import event.stcevent.STCEvent;
 
 public class ItemOverviewResponse extends STCEvent {
 
+	private static final long serialVersionUID = 8623771894111164440L;
 	private static final int MS_PER_MINUTE = 60000;
 	private static final int MS_PER_HOUR = 3600000;
 	private String description;
