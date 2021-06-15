@@ -41,7 +41,7 @@ public class BasicReportResponse extends STCEvent {
 
 	@Override
 	protected String doGetDescription() {
-		String string = "\n============Basic Report============"
+		String string = "\n===Basic Report==============================="
 				+ "\nBasic report type for:       \t" + MONTHS[month - 1] + " " + day + ", " + year
 				+ "\nPaid for on:                 \t" + millisToDate(paymentTime)
 				+ "\nNumber of sessions completed:\t" + numSessions
@@ -49,12 +49,12 @@ public class BasicReportResponse extends STCEvent {
 				+ "\nAverage efficiency:          \t" + formatDecimal(100 * efficiency) + "%"
 				+ "\nWasted Time:                 \t" + formatDuration((long) (activeTime * (1 - efficiency)))
 				+ "\nTotal Yield:"
-				+ "\n\t========Total Yield=========";
+				+ "\n\t===Total Yield========================";
 		for (int i = 0; i < harvestItems.length; i++) {
 			string += "\n\t" + harvestAmounts[i] + "x " + harvestItems[i];
 		}
-		string += "\n\t============================"
-				+ "\n====================================";
+		string += "\n\t======================================"
+				+ "\n==============================================";
 		return string;
 	}
 
