@@ -66,13 +66,14 @@ public class AdvancedReportResponse extends STCEvent {
 		double averageEfficiency = efficienctTimeSum / (double) totalActive;
 		String string = "\n===Advanced Report================================================================"
 				+ "\nAdvanced report for:         \t" + MONTHS[month - 1] + " " + day + ", " + year
-				+ "\nPurchased on                 \t" + millisToDate(paymentTime)
+				+ "\nPurchased on:                \t" + millisToDate(paymentTime)
 				+ "\nNumber of sessions completed:\t" + sessionLengths.length
 				+ "\nGross harvest value:         \t" + grossHarvest + " gold coins"
 				+ "\nGross expense value:         \t" + grossExpenses + " gold coins"
 				+ "\nNet harvest value:           \t" + (grossHarvest - grossExpenses) + " gold coins"
 				+ "\nActive time:                 \t" + formatDuration(totalActive)
-				+ "\nAverage Efficiency:          \t" + formatDecimal4DP(100 * averageEfficiency) + "%";
+				+ "\nAverage Efficiency:          \t" + formatDecimal4DP(100 * averageEfficiency) + "%"
+				+ "\nWasted Time:                 \t" + formatDuration((long) (totalActive * (1 - averageEfficiency)));
 		return string;
 	}
 
@@ -80,12 +81,13 @@ public class AdvancedReportResponse extends STCEvent {
 		String sessionDetails = "\n";
 		for (int i = 0; i < sessionEnds.length; i++) {
 			String sessionDetail = "\n\t===Session " + (i + 1)
-					+ "======================================================" + repeat(6 - numDigits(i + 1), '=');
-			sessionDetail += "\n\tStart time:        \t" + millisToDate(sessionEnds[i] - sessionLengths[i]);
-			sessionDetail += "\n\tSession length:    \t" + formatDuration(sessionLengths[i]);
-			sessionDetail += "\n\tEnd time:          \t" + millisToDate(sessionEnds[i]);
-			sessionDetail += "\n\tAverage efficiency:\t" + formatDecimal4DP(100 * efficiencies[i]) + "%";
-			sessionDetail += "\n\t---Harvest-------------|---Expenses------------|---Net Profit----------";
+					+ "======================================================" + repeat(6 - numDigits(i + 1), '=')
+					+ "\n\tStart time:        \t" + millisToDate(sessionEnds[i] - sessionLengths[i])
+					+ "\n\tSession length:    \t" + formatDuration(sessionLengths[i])
+					+ "\n\tEnd time:          \t" + millisToDate(sessionEnds[i])
+					+ "\n\tAverage efficiency:\t" + formatDecimal4DP(100 * efficiencies[i]) + "%"
+					+ "\n\tWasted Time:       \t" + formatDuration((long) (sessionLengths[i] * (1 - efficiencies[i])))
+					+ "\n\t---Harvest-------------|---Expenses------------|---Net Profit----------";
 			boolean[] expenseItemUsed = new boolean[expenseItems[i].length];
 			for (int itemIndex = 0; itemIndex < harvestItems[i].length; itemIndex++) {
 				String harvestItemName = harvestItems[i][itemIndex];

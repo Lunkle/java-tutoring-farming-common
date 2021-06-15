@@ -11,7 +11,9 @@ import event.stcevent.STCEvent;
 
 public class BasicReportResponse extends STCEvent {
 
-	private static final long serialVersionUID = 4526352448249553065L;
+	private static final long serialVersionUID = -4333448402500976078L;
+	private static final int MS_PER_MINUTE = 60000;
+	private static final int MS_PER_HOUR = 3600000;
 	private static final String[] MONTHS = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 	private int year;
 	private int month;
@@ -40,11 +42,12 @@ public class BasicReportResponse extends STCEvent {
 	@Override
 	protected String doGetDescription() {
 		String string = "\n============Basic Report============"
-				+ "\nBasic report type for " + MONTHS[month - 1] + " " + day + ", " + year
-				+ "\nPaid for on " + millisToDate(paymentTime)
-				+ "\nNumber of sessions completed: " + numSessions
-				+ "\nActive time: " + activeTime / 3600000 + "h " + (activeTime % 3600000) / 60000 + "m " + (activeTime % 60000) / 1000 + "s"
-				+ "\nAverage efficiency: " + formatDecimal(100 * efficiency) + "%"
+				+ "\nBasic report type for:       \t" + MONTHS[month - 1] + " " + day + ", " + year
+				+ "\nPaid for on:                 \t" + millisToDate(paymentTime)
+				+ "\nNumber of sessions completed:\t" + numSessions
+				+ "\nActive time:                 \t" + formatDuration(activeTime)
+				+ "\nAverage efficiency:          \t" + formatDecimal(100 * efficiency) + "%"
+				+ "\nWasted Time:                 \t" + formatDuration((long) (activeTime * (1 - efficiency)))
 				+ "\nTotal Yield:"
 				+ "\n\t========Total Yield=========";
 		for (int i = 0; i < harvestItems.length; i++) {
@@ -65,6 +68,12 @@ public class BasicReportResponse extends STCEvent {
 		DecimalFormat df = new DecimalFormat("#.####");
 		df.setRoundingMode(RoundingMode.HALF_UP);
 		return df.format(d);
+	}
+
+	private String formatDuration(long millis) {
+		return millis / MS_PER_HOUR + "h "
+				+ (millis % MS_PER_HOUR) / MS_PER_MINUTE + "m "
+				+ (millis % MS_PER_MINUTE) / 1000 + "s";
 	}
 
 }
