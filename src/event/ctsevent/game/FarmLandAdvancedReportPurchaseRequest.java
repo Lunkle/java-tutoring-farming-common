@@ -4,7 +4,7 @@ import java.time.ZoneId;
 
 import event.ctsevent.CTSEvent;
 
-public class AdvancedReportPurchaseRequest extends CTSEvent {
+public class FarmLandAdvancedReportPurchaseRequest extends CTSEvent {
 
 	private static final long serialVersionUID = 4526352448249553065L;
 	private static final String[] MONTHS = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -13,7 +13,7 @@ public class AdvancedReportPurchaseRequest extends CTSEvent {
 	private int day;
 	private ZoneId zoneId = ZoneId.systemDefault();
 
-	public AdvancedReportPurchaseRequest(long id, int year, int month, int day) {
+	public FarmLandAdvancedReportPurchaseRequest(long id, int year, int month, int day) {
 		super(id);
 		this.year = year;
 		this.month = month;

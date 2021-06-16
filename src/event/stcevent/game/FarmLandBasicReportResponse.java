@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 import event.stcevent.STCEvent;
 
-public class BasicReportResponse extends STCEvent {
+public class FarmLandBasicReportResponse extends STCEvent {
 
 	private static final long serialVersionUID = -4333448402500976078L;
 	private static final int MS_PER_MINUTE = 60000;
@@ -25,7 +25,7 @@ public class BasicReportResponse extends STCEvent {
 	private int[] harvestAmounts;
 	private long paymentTime;
 
-	public BasicReportResponse(long id, long respondingTo, long paymentTime, int year, int month, int day,
+	public FarmLandBasicReportResponse(long id, long respondingTo, long paymentTime, int year, int month, int day,
 			int numSessions, long activeTime, double efficiency, String[] harvestItems, int[] harvestAmounts) {
 		super(id, respondingTo);
 		this.paymentTime = paymentTime;
@@ -60,7 +60,7 @@ public class BasicReportResponse extends STCEvent {
 
 	private String millisToDate(long millis) {
 		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.of("UTC")).toLocalDateTime();
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, HH:mm:ss");
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, hh:mm:ss a");
 		return localDate.format(dateFormatter);
 	}
 

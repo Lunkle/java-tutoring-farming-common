@@ -11,7 +11,7 @@ import java.util.Map;
 
 import event.stcevent.STCEvent;
 
-public class AdvancedReportResponse extends STCEvent {
+public class FarmLandAdvancedReportResponse extends STCEvent {
 
 	private static final int MS_PER_MINUTE = 60000;
 	private static final int MS_PER_HOUR = 3600000;
@@ -26,7 +26,7 @@ public class AdvancedReportResponse extends STCEvent {
 	private String[][] harvestItems, expenseItems;
 	private int[][] harvestAmounts, expenseAmounts;
 
-	public AdvancedReportResponse(long id, long respondingTo, long paymentTime,
+	public FarmLandAdvancedReportResponse(long id, long respondingTo, long paymentTime,
 			int year, int month, int day,
 			long[] sessionEnds, long[] sessionLengths, double[] efficiencies,
 			int[] grossHarvests, String[][] harvestItems, int[][] harvestAmounts,
@@ -223,7 +223,7 @@ public class AdvancedReportResponse extends STCEvent {
 
 	private String millisToDate(long millis) {
 		LocalDateTime localDate = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDateTime();
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, HH:mm:ss");
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, hh:mm:ss a");
 		return localDate.format(dateFormatter);
 	}
 
