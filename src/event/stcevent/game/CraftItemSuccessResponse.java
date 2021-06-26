@@ -4,11 +4,12 @@ import event.stcevent.STCEvent;
 
 public class CraftItemSuccessResponse extends STCEvent {
 
-	private static final long serialVersionUID = 7065433269019683875L;
-	private String itemName;
-	private String itemAmount;
+	private static final long serialVersionUID = 1276653459813505505L;
 
-	public CraftItemSuccessResponse(long id, long respondingTo, String itemName, String itemAmount) {
+	private String itemName;
+	private int itemAmount;
+
+	public CraftItemSuccessResponse(long id, long respondingTo, String itemName, int itemAmount) {
 		super(id, respondingTo);
 		this.itemName = itemName;
 		this.itemAmount = itemAmount;
