@@ -2,6 +2,7 @@ package event.stcevent.game;
 
 import event.stcevent.STCEvent;
 
+@Deprecated
 public class SowSeedFailResponse extends STCEvent {
 
 	private static final long serialVersionUID = 29608008849065570L;
