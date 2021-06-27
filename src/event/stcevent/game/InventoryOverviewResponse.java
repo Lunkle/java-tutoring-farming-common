@@ -26,11 +26,11 @@ public class InventoryOverviewResponse extends STCEvent implements Serializable 
 
 	@Override
 	protected String doGetDescription() {
-		String string = "\n=Inventory==\n";
+		String string = "\n===Inventory=========\n";
 		for (int i = 0; i < items.length; i++) {
 			string += amounts[i] + "x " + items[i] + '\n';
 		}
-		string += "============";
+		string += "=====================";
 		return string;
 	}
 

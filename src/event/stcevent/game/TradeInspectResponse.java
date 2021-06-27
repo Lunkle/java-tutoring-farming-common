@@ -1,6 +1,5 @@
 package event.stcevent.game;
 
-
 import event.stcevent.STCEvent;
 
 public class TradeInspectResponse extends STCEvent {
@@ -11,12 +10,12 @@ public class TradeInspectResponse extends STCEvent {
 	private static final int MS_PER_DAY = 86400000;
 	private String settlementName;
 	long distance;
-	int availableFor;
-	String[] buyingItems,sellingItems;
-	int[] buyingAmts,sellingAmts;
+	long availableFor;
+	String[] buyingItems, sellingItems;
+	int[] buyingAmts, sellingAmts;
 
-	public TradeInspectResponse(long id, long respondingTo, String settlementName, long distance, int availableFor,
-			                    String[] buyingItems, int[] buyingAmts, String[] sellingItems, int[] sellingAmts) {
+	public TradeInspectResponse(long id, long respondingTo, String settlementName, long distance, long availableFor,
+			String[] buyingItems, int[] buyingAmts, String[] sellingItems, int[] sellingAmts) {
 		super(id, respondingTo);
 		this.settlementName = settlementName;
 		this.distance = distance;
@@ -35,22 +34,22 @@ public class TradeInspectResponse extends STCEvent {
 		return distance;
 	}
 
-	public int getAvailableFor() {
+	public long getAvailableFor() {
 		return availableFor;
 	}
-	
+
 	public String[] getBuying() {
 		return buyingItems;
 	}
-	
+
 	public String[] getSelling() {
 		return sellingItems;
 	}
-	
+
 	public int[] getBuyingAmounts() {
 		return buyingAmts;
 	}
-	
+
 	public int[] getSellingAmounts() {
 		return sellingAmts;
 	}
@@ -60,10 +59,9 @@ public class TradeInspectResponse extends STCEvent {
 		String indent = "\t";
 		String string = "\n===Trade Inspect=============\nLocated in "
 				+ settlementName + ", " + distance + "km away.\nAvailable for:" + formatDuration(availableFor) + '\n';
-				
-				
+
 		string += "Buying:\n";
-		for  (int i = 0; i < buyingItems.length; i++) {
+		for (int i = 0; i < buyingItems.length; i++) {
 			String item = buyingItems[i];
 			int amt = buyingAmts[i];
 			string += indent;
@@ -71,22 +69,22 @@ public class TradeInspectResponse extends STCEvent {
 		}
 
 		string += "Selling:\n";
-		for  (int i = 0; i < sellingItems.length; i++) {
+		for (int i = 0; i < sellingItems.length; i++) {
 			String item = sellingItems[i];
 			int amt = sellingAmts[i];
 			string += indent;
 			string += amt + "x " + item + '\n';
 		}
-		
+
 		string += "============================";
 		return string;
 	}
 
 	private String formatDuration(long millis) {
-		return  millis / MS_PER_DAY + "d "
-			   + (millis % MS_PER_DAY) / MS_PER_HOUR + "h "
-			   + (millis % MS_PER_HOUR) / MS_PER_MINUTE + "m "
-			   + (millis % MS_PER_MINUTE) / 1000 + "s";
+		return millis / MS_PER_DAY + "d "
+				+ (millis % MS_PER_DAY) / MS_PER_HOUR + "h "
+				+ (millis % MS_PER_HOUR) / MS_PER_MINUTE + "m "
+				+ (millis % MS_PER_MINUTE) / 1000 + "s";
 	}
 
 }
