@@ -2,13 +2,13 @@ package event.ctsevent.game;
 
 import event.ctsevent.CTSEvent;
 
-public class TradeInspectRequest extends CTSEvent {
+public class TradeSlotInspectRequest extends CTSEvent {
 
 	private static final long serialVersionUID = -601352504355792134L;
 	private int row;
 	private int col;
 
-	public TradeInspectRequest(long id, int row, int col) {
+	public TradeSlotInspectRequest(long id, int row, int col) {
 		super(id);
 		this.row = row;
 		this.col = col;
