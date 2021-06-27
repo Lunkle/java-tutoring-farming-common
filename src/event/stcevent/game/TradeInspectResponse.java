@@ -57,16 +57,7 @@ public class TradeInspectResponse extends STCEvent {
 
 	@Override
 	protected String doGetDescription() {
-		int largestBuyLength = 0, largestSellLength = 0;
-		for (String item : buyingItems) {
-			largestBuyLength = Math.max(item.length(), largestBuyLength);
-		}
-		for (String item : sellingItems) {
-			largestSellLength = Math.max(item.length(), largestSellLength);
-		}
-		
 		String indent = "\t";
-		
 		String string = "\n===Trade Inspect=============\nLocated in "
 				+ settlementName + ", " + distance + "km away.\nAvailable for:" + formatDuration(availableFor) + '\n';
 				
