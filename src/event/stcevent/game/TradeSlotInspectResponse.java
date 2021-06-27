@@ -2,7 +2,7 @@ package event.stcevent.game;
 
 import event.stcevent.STCEvent;
 
-public class TradeInspectResponse extends STCEvent {
+public class TradeSlotInspectResponse extends STCEvent {
 
 	private static final long serialVersionUID = 7575652991145747380L;
 	private static final int MS_PER_MINUTE = 60000;
@@ -14,7 +14,7 @@ public class TradeInspectResponse extends STCEvent {
 	String[] buyingItems, sellingItems;
 	int[] buyingAmts, sellingAmts;
 
-	public TradeInspectResponse(long id, long respondingTo, String settlementName, long distance, long availableFor,
+	public TradeSlotInspectResponse(long id, long respondingTo, String settlementName, long distance, long availableFor,
 			String[] buyingItems, int[] buyingAmts, String[] sellingItems, int[] sellingAmts) {
 		super(id, respondingTo);
 		this.settlementName = settlementName;
