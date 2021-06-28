@@ -13,8 +13,13 @@ public class ItemOverviewResponse extends STCEvent {
 	private int nutritionValue;
 	private long sellsIn;
 	private long growsIn;
+	private String[] recipeItems;
+	private int[] recipeAmounts;
 
-	public ItemOverviewResponse(long id, long respondingTo, String description, int value, long sellsIn, String growsInto, long growsIn, int nutritionValue) {
+	public ItemOverviewResponse(long id, long respondingTo, String description,
+			int value, long sellsIn,
+			String growsInto, long growsIn, int nutritionValue,
+			String[] recipeItems, int[] recipeAmounts) {
 		super(id, respondingTo);
 		this.description = description;
 		this.value = value;
@@ -22,11 +27,13 @@ public class ItemOverviewResponse extends STCEvent {
 		this.growsInto = growsInto;
 		this.growsIn = growsIn;
 		this.nutritionValue = nutritionValue;
+		this.recipeItems = recipeItems;
+		this.recipeAmounts = recipeAmounts;
 	}
 
 	@Override
 	protected String doGetDescription() {
-		String string = "\n===Item Description============"
+		String string = "\n===Item Description================"
 				+ '\n' + description
 				+ "\nValue: " + value + " gold coins"
 				+ "\nSells in: " + formatDuration(sellsIn);
@@ -37,7 +44,14 @@ public class ItemOverviewResponse extends STCEvent {
 		if (nutritionValue != 0) {
 			string += "\nNutrition: " + nutritionValue;
 		}
-		string += "\n===============================";
+		if (recipeItems.length != 0) {
+			string += "\n\t===Recipe======================";
+			for (int i = 0; i < recipeItems.length; i++) {
+				string += "\n\t" + recipeAmounts[i] + "x " + recipeItems[i];
+			}
+			string += "\n\t===============================";
+		}
+		string += "\n===================================";
 		return string;
 	}
 
