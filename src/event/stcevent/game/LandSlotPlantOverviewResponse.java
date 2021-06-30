@@ -28,14 +28,14 @@ public class LandSlotPlantOverviewResponse extends STCEvent implements Serializa
 
 	@Override
 	protected String doGetDescription() {
-		String string = "\n====Plant====\n"
+		String string = "\n===Plant==================\n"
 				+ "Plant type: " + plantType + "\nHarvestable";
 		if (timeUntilHarvestable != 0) {
 			string += " in " + timeUntilHarvestable / MILLISECONDS_PER_HOUR + "h "
 					+ (timeUntilHarvestable % MILLISECONDS_PER_HOUR) / MILLISECONDS_PER_MINUTE + "m "
 					+ (timeUntilHarvestable % MILLISECONDS_PER_MINUTE) / 1000 + "s";
 		}
-		string += "\n=============";
+		string += "\n==========================";
 		return string;
 	}
 
