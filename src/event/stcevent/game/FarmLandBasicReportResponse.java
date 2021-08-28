@@ -39,15 +39,22 @@ public class FarmLandBasicReportResponse extends STCEvent {
 		this.harvestAmounts = harvestAmounts;
 	}
 
+	public static void main(String[] args) {
+		long activeTime = 100000000;
+		double efficiency = 0.95;
+		FarmLandBasicReportResponse response = new FarmLandBasicReportResponse(0, 0, 0, 2021, 6, 12, 13, activeTime, efficiency, new String[0], new int[0]);
+		System.out.println(response.getDescription());
+	}
+
 	@Override
 	protected String doGetDescription() {
 		String string = "\n===Basic Report==============================="
-				+ "\nBasic report type for:       \t" + MONTHS[month - 1] + " " + day + ", " + year
-				+ "\nPaid for on:                 \t" + millisToDate(paymentTime)
-				+ "\nNumber of sessions completed:\t" + numSessions
-				+ "\nActive time:                 \t" + formatDuration(activeTime)
-				+ "\nAverage efficiency:          \t" + formatDecimal(100 * efficiency) + "%"
-				+ "\nWasted Time:                 \t" + formatDuration((long) (activeTime * (1 - efficiency)))
+				+ "\nBasic report type for:\t" + MONTHS[month - 1] + " " + day + ", " + year
+				+ "\nPaid for on:          \t" + millisToDate(paymentTime)
+				+ "\nSessions completed:   \t" + numSessions
+				+ "\nActive time:          \t" + formatDuration(activeTime)
+				+ "\nAverage efficiency:   \t" + formatDecimal(100 * efficiency) + "%"
+				+ "\nWasted Time:          \t" + formatDuration((long) (activeTime * (1 - efficiency)))
 				+ "\nTotal Yield:"
 				+ "\n\t===Total Yield========================";
 		for (int i = 0; i < harvestItems.length; i++) {
@@ -64,13 +71,13 @@ public class FarmLandBasicReportResponse extends STCEvent {
 		return localDate.format(dateFormatter);
 	}
 
-	private String formatDecimal(double d) {
+	private static String formatDecimal(double d) {
 		DecimalFormat df = new DecimalFormat("#.####");
 		df.setRoundingMode(RoundingMode.HALF_UP);
 		return df.format(d);
 	}
 
-	private String formatDuration(long millis) {
+	private static String formatDuration(long millis) {
 		return millis / MS_PER_HOUR + "h "
 				+ (millis % MS_PER_HOUR) / MS_PER_MINUTE + "m "
 				+ (millis % MS_PER_MINUTE) / 1000 + "s";
