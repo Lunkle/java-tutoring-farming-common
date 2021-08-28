@@ -1,16 +1,18 @@
 name: Visualize Repository
 
 on:
-  workflow_dispatch: {}
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@main
+      - uses: actions/checkout@main
       - name: Update diagram
         uses: githubocto/repo-visualizer@main
         with:
