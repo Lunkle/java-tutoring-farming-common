@@ -1,12 +1,11 @@
-name: Visualize Repository
-
+name: Create diagram
 on:
   workflow_dispatch: {}
   push:
     branches:
       - main
 jobs:
-  build:
+  get_data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
