@@ -1,10 +1,21 @@
 package event.stcevent.game;
 
-public class OutOfBoundsResponse extends TextResponse{
-	
-	private static final long serialVersionUID = -54056039154817074L;
+import event.stcevent.STCEvent;
 
-	public OutOfBoundsResponse(long id, long respondingTo, String slotType, int row, int col) {
-		super(id,respondingTo,slotType + " index (row: " + row + ", col: " + col + ") is out of bounds.");
+public class OutOfBoundsResponse extends STCEvent {
+
+	private static final long serialVersionUID = 2061962100165988667L;
+	private int row;
+	private int col;
+
+	public OutOfBoundsResponse(long id, long respondingTo, int row, int col) {
+		super(id, respondingTo);
+		this.row = row;
+		this.col = col;
+	}
+
+	@Override
+	protected String doGetDescription() {
+		return "(row: " + row + ", col: " + col + ") is out of bounds.";
 	}
 }
